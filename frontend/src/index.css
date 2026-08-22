@@ -1,0 +1,532 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Georgia:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   KNOVAULT — PREMIUM LIGHT DESIGN SYSTEM
+   ============================================================ */
+
+:root {
+  /* Color Palette - Notion / Apple Light inspired */
+  --primary-color:    #4F7BFF;
+  --bg-base:          #FAFBFF;
+  --bg-surface:       #ffffff;
+  --bg-elevated:      #F4F6FC;
+  --bg-hover:         #EEF4FF;
+  --bg-active:        #e0e8ff;
+  --bg-accent:        #EEF4FF;
+
+  --border-subtle:    rgba(79, 123, 255, 0.06);
+  --border-default:   rgba(79, 123, 255, 0.1);
+  --border-focus:     rgba(79, 123, 255, 0.4);
+  --border-glow:      rgba(79, 123, 255, 0.15);
+
+  --accent-from:      #4F7BFF;
+  --accent-to:        #7E9DFF;
+  --accent-bright:    #4F7BFF;
+
+  --text-primary:     #1F2937;
+  --text-secondary:   #4B5563;
+  --text-muted:       #9CA3AF;
+  --text-accent:      #4F7BFF;
+
+  --glass-bg:         rgba(255, 255, 255, 0.7);
+  --glass-border:     rgba(79, 123, 255, 0.08);
+  --glass-highlight:  rgba(255, 255, 255, 0.4);
+
+  --success:          #10B981;
+  --success-bg:       #E6F4EA;
+  --success-border:   rgba(16, 185, 129, 0.2);
+
+  --error:            #EF4444;
+  --error-bg:         #FEE2E2;
+  --error-border:     rgba(239, 68, 68, 0.2);
+
+  --shadow-card:      0 8px 30px rgba(79, 123, 255, 0.03);
+  --shadow-elevated:  0 12px 40px rgba(79, 123, 255, 0.06);
+  --shadow-input:     0 4px 20px rgba(79, 123, 255, 0.02);
+}
+
+.light-theme-page {
+  --bg-base:          #FAFBFF;
+  --bg-surface:       #ffffff;
+  --bg-elevated:      #F4F6FC;
+  --bg-hover:         #EEF4FF;
+  --bg-active:        #e0e8ff;
+
+  --border-subtle:    rgba(79, 123, 255, 0.06);
+  --border-default:   rgba(79, 123, 255, 0.1);
+  --border-focus:     rgba(79, 123, 255, 0.4);
+  --border-glow:      rgba(79, 123, 255, 0.15);
+
+  --text-primary:     #1F2937;
+  --text-secondary:   #4B5563;
+  --text-muted:       #9CA3AF;
+  --text-accent:      #4F7BFF;
+
+  --glass-bg:         rgba(255, 255, 255, 0.7);
+  --glass-border:     rgba(79, 123, 255, 0.08);
+
+  --success:          #10B981;
+  --success-bg:       #E6F4EA;
+  --success-border:   rgba(16, 185, 129, 0.2);
+
+  --error:            #EF4444;
+  --error-bg:         #FEE2E2;
+  --error-border:     rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Smooth Transitions */
+* {
+  transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease, transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 123, 255, 0.15);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 123, 255, 0.3);
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(30px, -50px) scale(1.1); }
+  66%      { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(79, 123, 255, 0.15); }
+  50%      { box-shadow: 0 0 25px rgba(79, 123, 255, 0.3), 0 0 45px rgba(79, 123, 255, 0.1); }
+}
+
+@keyframes scalePop {
+  0%   { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-4px); }
+  75%      { transform: translateX(4px); }
+}
+
+/* ============================================================
+   ANIMATION CLASSES
+   ============================================================ */
+.animate-page-fade      { animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-in        { animation: fadeIn 0.35s ease both; }
+.animate-fade-in-up     { animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-slide-in-right { animation: slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-slide-in-left  { animation: slideInLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-scale-pop      { animation: scalePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.animate-shake          { animation: shake 0.4s ease; }
+
+/* Typing indicator dots */
+.typing-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  animation: typingBounce 1s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+/* Soft background blobs */
+.bg-blob-1 {
+  position: absolute;
+  top: -10%;
+  left: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(79, 123, 255, 0.06) 0%, rgba(238, 244, 255, 0.02) 60%, transparent 100%);
+  filter: blur(60px);
+  z-index: -5;
+  animation: floatBlob 25s ease-in-out infinite;
+}
+
+.bg-blob-2 {
+  position: absolute;
+  bottom: 5%;
+  right: -5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(79, 123, 255, 0.05) 0%, rgba(238, 244, 255, 0.02) 60%, transparent 100%);
+  filter: blur(80px);
+  z-index: -5;
+  animation: floatBlob 30s ease-in-out infinite alternate;
+}
+
+/* ============================================================
+   GLASS MORPHISM COMPONENTS
+   ============================================================ */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+}
+
+.glass-card-elevated {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(79, 123, 255, 0.12);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--shadow-elevated);
+  border-radius: 24px;
+}
+
+/* ============================================================
+   UPLOAD ZONE
+   ============================================================ */
+.upload-zone {
+  position: relative;
+  border: 2px dashed rgba(79, 123, 255, 0.2);
+  border-radius: 24px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(79, 123, 255, 0.01);
+}
+.upload-zone:hover {
+  border-color: var(--primary-color);
+  background: rgba(79, 123, 255, 0.03);
+  box-shadow: 0 8px 30px rgba(79, 123, 255, 0.05);
+  transform: translateY(-2px);
+}
+.upload-zone.dragging {
+  border-color: var(--primary-color);
+  background: rgba(79, 123, 255, 0.06);
+  box-shadow: 0 12px 40px rgba(79, 123, 255, 0.1), inset 0 0 20px rgba(79, 123, 255, 0.02);
+  transform: scale(1.01);
+}
+
+/* ============================================================
+   CHAT BUBBLES
+   ============================================================ */
+.msg-user {
+  background: var(--primary-color);
+  box-shadow: 0 4px 16px rgba(79, 123, 255, 0.2);
+  border-radius: 20px 20px 4px 20px;
+}
+
+.msg-assistant {
+  background: var(--bg-surface);
+  border: 1px solid rgba(79, 123, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(79, 123, 255, 0.02);
+  border-radius: 20px 20px 20px 4px;
+}
+
+/* ============================================================
+   SUGGESTION CHIPS
+   ============================================================ */
+.suggestion-chip {
+  background: rgba(79, 123, 255, 0.04);
+  border: 1px solid rgba(79, 123, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+  cursor: pointer;
+}
+.suggestion-chip:hover {
+  background: var(--bg-hover);
+  border-color: rgba(79, 123, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(79, 123, 255, 0.04);
+  transform: scale(1.03);
+}
+
+/* ============================================================
+   INPUT BAR
+   ============================================================ */
+.chat-input-bar {
+  background: var(--bg-surface);
+  border: 1px solid rgba(79, 123, 255, 0.12);
+  border-radius: 24px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-input);
+}
+.chat-input-bar:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 24px rgba(79, 123, 255, 0.06), 0 0 0 3px rgba(79, 123, 255, 0.12);
+}
+
+/* ============================================================
+   SEND BUTTON
+   ============================================================ */
+.send-btn {
+  background: var(--primary-color);
+  border-radius: 14px;
+  transition: all 0.2s ease;
+}
+.send-btn:hover:not(:disabled) {
+  box-shadow: 0 4px 16px rgba(79, 123, 255, 0.35);
+  transform: scale(1.05);
+}
+.send-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+.send-btn:disabled {
+  background: #E5E7EB;
+  color: #9CA3AF;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   PROSE (markdown) LIGHT OVERRIDE
+   ============================================================ */
+.dark-prose { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.7; }
+.dark-prose p  { margin: 0.4em 0; }
+.dark-prose ul { padding-left: 1.25rem; list-style: disc; margin: 0.4em 0; }
+.dark-prose ol { padding-left: 1.25rem; list-style: decimal; margin: 0.4em 0; }
+.dark-prose li { margin: 0.2em 0; }
+.dark-prose strong { color: var(--text-primary); font-weight: 600; }
+.dark-prose em { color: var(--primary-color); }
+.dark-prose code {
+  background: rgba(79, 123, 255, 0.08);
+  color: #1d4ed8;
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+  font-size: 0.82em;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+.dark-prose pre {
+  background: #F8FAFC;
+  border: 1px solid rgba(79, 123, 255, 0.08);
+  border-radius: 12px;
+  padding: 1em;
+  overflow-x: auto;
+  margin: 0.6em 0;
+}
+.dark-prose pre code {
+  background: transparent;
+  padding: 0;
+  color: #1e293b;
+  font-size: 0.82em;
+}
+.dark-prose h1, .dark-prose h2, .dark-prose h3 {
+  color: var(--text-primary);
+  font-weight: 700;
+  margin: 0.6em 0 0.3em;
+}
+.dark-prose a { color: var(--primary-color); text-decoration: underline; }
+.dark-prose blockquote {
+  border-left: 3px solid var(--primary-color);
+  padding-left: 0.75rem;
+  color: var(--text-muted);
+  margin: 0.5em 0;
+}
+.dark-prose table { width: 100%; border-collapse: collapse; margin: 0.6em 0; }
+.dark-prose th { background: rgba(79, 123, 255, 0.06); color: var(--text-primary); padding: 0.5em 0.75em; }
+.dark-prose td { border-top: 1px solid rgba(79, 123, 255, 0.06); padding: 0.5em 0.75em; }
+
+/* ============================================================
+   NOTIFICATION TOASTS
+   ============================================================ */
+.toast-success {
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--success);
+  border-radius: 16px;
+}
+.toast-error {
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  color: var(--error);
+  border-radius: 16px;
+}
+
+/* ============================================================
+   MODAL OVERLAY
+   ============================================================ */
+.modal-overlay {
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ============================================================
+   DOCUMENT LIST ITEMS
+   ============================================================ */
+.doc-item {
+  background: var(--bg-surface);
+  border: 1px solid rgba(79, 123, 255, 0.08);
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.doc-item:hover {
+  border-color: rgba(79, 123, 255, 0.3);
+  background: var(--bg-hover);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   STATUS INDICATOR
+   ============================================================ */
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+  position: relative;
+}
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--success);
+  opacity: 0.3;
+  animation: pingOnce 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   SOURCE BADGE
+   ============================================================ */
+.source-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: rgba(79, 123, 255, 0.06);
+  border: 1px solid rgba(79, 123, 255, 0.15);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.source-badge:hover {
+  background: rgba(79, 123, 255, 0.12);
+  border-color: rgba(79, 123, 255, 0.35);
+  box-shadow: 0 4px 12px rgba(79, 123, 255, 0.1);
+}
+
+/* ============================================================
+   KALAM PORTRAIT TREATMENTS
+   ============================================================ */
+
+/* Sidebar portrait: large, decorative, lower-left */
+.kalam-portrait-sidebar {
+  opacity: 0.18;
+  filter: grayscale(1) brightness(1.1) contrast(0.85) sepia(0.15) hue-rotate(190deg);
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 75% at 50% 35%,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.7) 30%,
+    rgba(0,0,0,0.3) 55%,
+    rgba(0,0,0,0) 80%
+  );
+  mask-image: radial-gradient(
+    ellipse 85% 75% at 50% 35%,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.7) 30%,
+    rgba(0,0,0,0.3) 55%,
+    rgba(0,0,0,0) 80%
+  );
+}
+
+/* Chat panel portrait: smaller, more faded, lower-right */
+.kalam-portrait-chat {
+  opacity: 0.10;
+  filter: grayscale(1) brightness(1.15) contrast(0.8) sepia(0.12) hue-rotate(190deg);
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 70% at 55% 40%,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.6) 25%,
+    rgba(0,0,0,0.2) 50%,
+    rgba(0,0,0,0) 75%
+  );
+  mask-image: radial-gradient(
+    ellipse 80% 70% at 55% 40%,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.6) 25%,
+    rgba(0,0,0,0.2) 50%,
+    rgba(0,0,0,0) 75%
+  );
+}
+
+/* Responsive: hide/reduce portraits on small screens */
+@media (max-width: 1023px) {
+  .kalam-portrait-sidebar,
+  .kalam-portrait-chat {
+    display: none;
+  }
+}
+
+/* Welcome area portrait: medium, decorative alongside suggestions */
+.kalam-portrait-welcome {
+  opacity: 0.20;
+  filter: grayscale(1) brightness(1.1) contrast(0.85) sepia(0.15) hue-rotate(190deg);
+  -webkit-mask-image: radial-gradient(
+    ellipse 90% 80% at 50% 40%,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.65) 30%,
+    rgba(0,0,0,0.25) 55%,
+    rgba(0,0,0,0) 80%
+  );
+  mask-image: radial-gradient(
+    ellipse 90% 80% at 50% 40%,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.65) 30%,
+    rgba(0,0,0,0.25) 55%,
+    rgba(0,0,0,0) 80%
+  );
+}

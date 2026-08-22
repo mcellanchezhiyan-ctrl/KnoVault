@@ -1,0 +1,23 @@
+fastapi
+uvicorn
+pydantic-settings
+python-dotenv
+python-multipart
+
+# Document processing
+PyPDF2
+python-pptx
+python-docx
+
+# RAG
+langchain
+langchain-community
+langchain-text-splitters
+chromadb
+sentence-transformers
+
+# LLM Providers
+ollama
+openai
+google-generativeai
+huggingface_hub

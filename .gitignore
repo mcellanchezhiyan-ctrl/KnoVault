@@ -1,0 +1,32 @@
+# ── Secrets ──────────────────────────────────────────────
+# NEVER commit .env files - they contain API keys
+.env
+.env.local
+*.env
+!.env.example
+
+# ── Python ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# ── Application data (regenerated at runtime) ────────────
+backend/vector_db/
+backend/uploads/
+
+# ── Node / Frontend ──────────────────────────────────────
+node_modules/
+dist/
+dist-ssr/
+*.log
+npm-debug.log*
+
+# ── Editor / OS ──────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
